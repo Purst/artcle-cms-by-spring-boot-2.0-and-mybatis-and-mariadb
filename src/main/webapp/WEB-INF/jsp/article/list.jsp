@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +9,11 @@
 <title>안녕하세요</title>
 </head>
 <body>
-	게시물 리스트 입니다.
+	<c:forEach var="list" items="${list}" varStatus="status">
+		${list.id}
+		${list.regDate}
+		${list.title}
+		${list.contents}<br>
+	</c:forEach>
 </body>
 </html>
