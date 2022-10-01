@@ -6,14 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>안녕하세요</title>
+<title>게시물 리스트</title>
 </head>
 <body>
-	<c:forEach var="list" items="${list}" varStatus="status">
-		${list.id}
-		${list.regDate}
-		${list.title}
-		${list.contents}<br>
+	<h1>게시물 리스트</h1>
+	<c:forEach items="${list}" var="article">
+		<section>${article.id}, ${article.regDate}, ${article.title} ,${article.contents}</section>
+		<hr>
 	</c:forEach>
 </body>
 </html>

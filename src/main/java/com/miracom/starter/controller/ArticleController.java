@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.miracom.starter.dao.ArticleDao;
 import com.miracom.starter.dto.Article;
 import com.miracom.starter.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class ArticleController {
+	
+	@Autowired
+	ArticleDao articleDao;
 	
 	@Autowired
 	ArticleService articleService;
