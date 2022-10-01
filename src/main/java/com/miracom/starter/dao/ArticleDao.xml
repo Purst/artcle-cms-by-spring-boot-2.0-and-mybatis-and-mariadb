@@ -6,6 +6,7 @@
 	<select id="getList" parameterType="map" resultType="Article">
 		SELECT *
 		  FROM ARTICLE
+		 ORDER BY ID
 	</select>
 </mapper>
    
