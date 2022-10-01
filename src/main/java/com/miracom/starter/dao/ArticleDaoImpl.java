@@ -1,5 +1,6 @@
 package com.miracom.starter.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	@Override
 	public List<Article> getList() {
 		
-		return null;
+		return new ArrayList<Article>();
 	}
 
 }

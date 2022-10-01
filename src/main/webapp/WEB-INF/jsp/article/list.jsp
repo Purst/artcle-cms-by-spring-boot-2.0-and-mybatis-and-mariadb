@@ -11,7 +11,7 @@
 <body>
 	<h1>게시물 리스트</h1>
 	<c:forEach items="${list}" var="article">
-		<section>${article.id}, ${article.regDate}, ${article.title} ,${article.contents}</section>
+		<section>${article.id}, ${article.title} ,${article.contents}, ${article.reg_date}</section>
 		<hr>
 	</c:forEach>
 </body>
