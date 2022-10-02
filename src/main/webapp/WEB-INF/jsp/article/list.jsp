@@ -56,11 +56,10 @@
 						
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable">
                                     <thead>
-										<tr>
-											
-											<th>번호</th>
+										<tr>											
+											<th aria-sort="descending">번호</th>
 											<th>제목</th>
 											<th>내용</th>
 											<th>등록일시</th>
@@ -70,9 +69,9 @@
 				
 									<c:forEach items="${list}" var="article">
 										<tr>	
-											<td><input type="checkbox" data-id="${article.id}"/> ${article.id}</td>
-											<td>${article.title}</td>
-											<td>${article.contents}</td>
+											<td><a href="#"><input type="checkbox" data-id="${article.id}"/> ${article.id}</a></td>
+											<td><a href="#">${article.title}</a></td>
+											<td><a href="#">${article.contents}</a></td>
 											<td>${article.reg_date}</td>
 										</tr>
 									</c:forEach>
@@ -103,27 +102,25 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    
+    <jsp:include page="/common/script"></jsp:include>
+    
+    <script>    	
 
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-   <jsp:include page="/common/script"></jsp:include>
+		$(document).ready(function() {
+			sortIdAsDesc();
+		});
+	
+		function sortIdAsDesc() {
+			$('#dataTable').DataTable({
+				order : [ [ 0, 'desc' ] ],
+				ordering : true,
+				serverSide : false,
+				destroy : true
+			});
+		}
+		
+	</script>
 
 </body>
 

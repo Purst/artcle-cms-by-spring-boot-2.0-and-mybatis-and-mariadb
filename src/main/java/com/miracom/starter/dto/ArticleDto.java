@@ -1,7 +1,5 @@
 package com.miracom.starter.dto;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Article {
+public class ArticleDto {
 	private long id;
 	private String reg_date;
 	private String title;
