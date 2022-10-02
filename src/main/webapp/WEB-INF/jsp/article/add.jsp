@@ -1,91 +1,133 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>커뮤니티 사이트 - 게시물 등록</title>
 
-<style>
-	.con{
-		width: 1000px;
-		margin : 0 auto;
-	}
-	
-	.common-form > div > span {
-		width: 50px;
-	}
-	
-	.common-form > div > * {
-		float: left;
-	}
-	
-	.common-form > div::after {
-		content: "";
-		display: block;
-		clear: both;
-		
-	}
-	
-	.common-form > div > div {
-		width: calc(100% - 50px);
-	}
-	
-	.common-form > div > div > input[type=text], .common-form > div > div > textarea {
-		width: 90%;
-	}				
+<jsp:include page="/common/link"></jsp:include>
 
-</style>
+<title>AWS Service Register</title>
 
 </head>
-<body>
 
-	<h1>게시물 등록</h1>
-	
-<form class="con common-form" action="./doAdd" method="POST" onsubmit="submitAddForm(this); return false;">
-	<div>
-		<span>제목</span>
-		<div><input type="text" name="title" placeholder="제목" autofocus="autofocus"/></div>	
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<jsp:include page="/common/sidebar"></jsp:include>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<jsp:include page="/common/topbar"></jsp:include>
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<div class="card o-hidden border-0 shadow-lg my-5 border-left-primary">
+						<div class="card-body p-0">		
+							<div class="col-auto">
+								<div class="p-5">
+									<div class="text-center">
+										<h1 class="h4 text-gray-900 mb-4">AWS Service Register</h1>
+									</div>
+									<form class="user" action="./doAdd" method="POST"
+										  onsubmit="submitAddForm(this); return false;">
+										<div class="form-group">												
+											<input type="text" class="form-control col" name="title" placeholder="제목">																								
+										</div>
+										<div class="form-group">
+											<textarea class="form-control" id="exampleInputEmail" placeholder="내용"></textarea>
+										</div>
+										
+										<div class="form-group row">
+											<div class="col-sm-6 mb-3 mb-sm-0">
+		                                    	<input type="submit"  class="btn btn-primary btn-user btn-block" 
+		                                    		   value="작성" />
+		                                    </div>
+		                                    <div class="col-sm-6">				                                    
+												<input type="reset" class="btn btn-secondary btn-user btn-block" 
+													   value="취소" onclick="history.back();"/>		
+		                                </div>							
+									</form>									
+								</div>
+							</div>							
+						</div>
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<jsp:include page="/common/footer"></jsp:include>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
 	</div>
-	<div>
-		<span>내용</span>
-		<div><textarea name="contents" placeholder="내용"></textarea></div>	
-	</div>	
-	<div>
-		<span>작성</span>
-		<div>
-			<input type="submit" value="작성" />
-			<input type="reset" value="취소" onclick="history.back();"/>
-		</div>	
-	</div>	
-</form>	
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="/#page-top"> <i class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true"
+	>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="/login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="/common/script"></jsp:include>
 	
+	<script>
+
+		function submitAddForm(form) {
+			form.title.value = form.title.value.trim();
+			if( form.title.value.length == 0) {
+				alert('제목을 입력해주세요.');
+				form.title.focus();
+				
+				return false;
+			}
+			
+			form.contents.value = form.contents.value.trim();
+			if( form.contents.value.length == 0) {
+				alert('내용을 입력해주세요.');
+				form.title.focus();
+				
+				return false;
+			}
+			
+			form.submit();
+		}
+	
+	
+	</script>
+
 </body>
 
-<script>
-
-	function submitAddForm(form) {
-		form.title.value = form.title.value.trim();
-		if( form.title.value.length == 0) {
-			alert('제목을 입력해주세요.');
-			form.title.focus();
-			
-			return false;
-		}
-		
-		form.contents.value = form.contents.value.trim();
-		if( form.contents.value.length == 0) {
-			alert('내용을 입력해주세요.');
-			form.title.focus();
-			
-			return false;
-		}
-		
-		form.submit();
-	}
-
-
-</script>
 </html>
