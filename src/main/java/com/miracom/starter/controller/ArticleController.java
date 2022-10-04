@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.miracom.starter.dao.ArticleDao;
@@ -25,8 +26,7 @@ public class ArticleController {
 	@Autowired
 	ArticleService articleService;
 	
-	@RequestMapping("/article/list")
-	@GetMapping("/article/list")	
+	@RequestMapping(value = "/article/list", method= {RequestMethod.GET, RequestMethod.POST})	
 	public String showList(Model model) { 
 		
 		List<ArticleDto> list = articleService.getList();
@@ -38,18 +38,40 @@ public class ArticleController {
 		return "article/list"; 
 	}
 		
-	@GetMapping("/article/add")
+	@RequestMapping(value = "/article/add", method= {RequestMethod.GET, RequestMethod.POST})	
 	public String showAdd() {		
 		return "article/add"; 
 	}
 	
-	@PostMapping("/article/doAdd")	
+	@RequestMapping(value = "/article/detail", method= {RequestMethod.GET, RequestMethod.POST})	
+	public String showDetail(Model model, ArticleDto dto) {	
+		
+		log.info("id : " + dto.getId());
+		
+		ArticleDto resultDto = articleService.get(dto);
+		model.addAttribute("dto", resultDto);
+		
+		return "article/detail"; 
+	}	
+	
+	@RequestMapping(value = "/article/doAdd", method= {RequestMethod.GET, RequestMethod.POST})		
 	public String doAdd(ArticleDto dto) {		
 		
 		log.info("title : " + dto.getTitle());
 		log.info("contents : " + dto.getContents());
 		
 		articleService.add(dto);
+		
+		return "redirect:/article/list";			  
+	}
+	
+	@RequestMapping(value = "/article/remove", method= {RequestMethod.GET, RequestMethod.POST})		
+	public String remove(ArticleDto dto) {		
+		
+		log.info("id : " + dto.getId());
+		log.info("title : " + dto.getTitle());		
+		
+		articleService.delete(dto);
 		
 		return "redirect:/article/list";			  
 	}

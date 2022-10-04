@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ArticleDto {
 	private long id;
+	private String nickname;
+	private String password;
 	private String reg_date;
 	private String title;
-	private String contents;
+	private String contents;	
 }

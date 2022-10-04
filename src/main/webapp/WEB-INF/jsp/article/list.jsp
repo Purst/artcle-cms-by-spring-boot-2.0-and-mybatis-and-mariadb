@@ -13,6 +13,9 @@
 
 <body id="page-top">
 
+<form id="listForm" action="/article/detail" method="post">
+	<input type="hidden" id="id" name="id" />
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -41,10 +44,6 @@
                         <span class="text">Register New Service</span>
                     </a>
                     
-                    <a href="#" class="btn btn-secondary btn-icon-split btn-sm">
-					    <span class="icon text-white-50"></span>
-					    <span class="text">Delete Service</span>
-					</a>
                     
                     <div class="my-2"></div>
 						
@@ -60,8 +59,9 @@
                                     <thead>
 										<tr>											
 											<th aria-sort="descending">번호</th>
-											<th>제목</th>
-											<th>내용</th>
+											<th>서비스</th>
+											<th>설명</th>
+											<th>작성자</th>
 											<th>등록일시</th>
 										</tr>
 									</thead>
@@ -69,9 +69,10 @@
 				
 									<c:forEach items="${list}" var="article">
 										<tr>	
-											<td><a href="#"><input type="checkbox" data-id="${article.id}"/> ${article.id}</a></td>
-											<td><a href="#">${article.title}</a></td>
-											<td><a href="#">${article.contents}</a></td>
+											<td>${article.id}</td>
+											<td><a href="javascript:view('${article.id}')">${article.title}</a></td>
+											<td>${article.contents}</td>
+											<td>${article.nickname}</td>
 											<td>${article.reg_date}</td>
 										</tr>
 									</c:forEach>
@@ -104,23 +105,30 @@
     </a>
     
     <jsp:include page="/common/script"></jsp:include>
-    
-    <script>    	
 
-		$(document).ready(function() {
-			sortIdAsDesc();
-		});
-	
-		function sortIdAsDesc() {
-			$('#dataTable').DataTable({
-				order : [ [ 0, 'desc' ] ],
-				ordering : true,
-				serverSide : false,
-				destroy : true
-			});
-		}
-		
-	</script>
+</form>
+    
+<script>    	
+
+$(document).ready(function() {
+	sortIdAsDesc();
+});
+
+function sortIdAsDesc() {
+	$('#dataTable').DataTable({
+		order : [ [ 0, 'desc' ] ],
+		ordering : true,
+		serverSide : false,
+		destroy : true
+	});
+}
+
+function view(id) {
+	$('#id').val(id);
+	$('#listForm').attr('target', '_self').submit();
+}
+
+</script>
 
 </body>
 

@@ -48,12 +48,22 @@
 										
 										<div class="form-group row">
 											<div class="col-sm-6 mb-3 mb-sm-0">
+		                                    	<input type="text" class="form-control col" name="nickname" placeholder="닉네임">
+		                                    </div>
+		                                    <div class="col-sm-6">				                                    
+												<input type="password" class="form-control col" name="password" placeholder="비밀번호">
+											</div>		
+		                                </div>
+		                                										
+										<div class="form-group row">
+											<div class="col-sm-6 mb-3 mb-sm-0">
 		                                    	<input type="submit"  class="btn btn-primary btn-user btn-block" 
 		                                    		   value="작성" />
 		                                    </div>
 		                                    <div class="col-sm-6">				                                    
 												<input type="reset" class="btn btn-secondary btn-user btn-block" 
-													   value="취소" onclick="history.back();"/>		
+													   value="취소" onclick="history.back();"/>
+											</div>		
 		                                </div>							
 									</form>									
 								</div>
@@ -78,8 +88,7 @@
 	<!-- End of Page Wrapper -->
 
 	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="/#page-top"> <i class="fas fa-angle-up"></i>
-	</a>
+	<a class="scroll-to-top rounded" href="/#page-top"> <i class="fas fa-angle-up"></i></a>
 
 	<jsp:include page="/common/script"></jsp:include>
 	
@@ -98,6 +107,22 @@
 			if( form.contents.value.length == 0) {
 				alert('내용을 입력해주세요.');
 				form.title.focus();
+				
+				return false;
+			}
+			
+			form.nickname.value = form.nickname.value.trim();
+			if( form.nickname.value.length == 0) {
+				alert('닉네임을 입력해주세요.');
+				form.nickname.focus();
+				
+				return false;
+			}
+			
+			form.password.value = form.password.value.trim();
+			if( form.password.value.length == 0) {
+				alert('비밀번호를 입력해주세요.');
+				form.password.focus();
 				
 				return false;
 			}

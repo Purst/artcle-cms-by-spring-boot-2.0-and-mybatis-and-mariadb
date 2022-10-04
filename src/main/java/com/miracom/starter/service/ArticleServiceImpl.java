@@ -23,5 +23,15 @@ public class ArticleServiceImpl implements ArticleService{
 	public void add(ArticleDto dto) {
 		articleDao.add(dto);
 	}
+
+	@Override
+	public void delete(ArticleDto dto) {
+		articleDao.delete(dto);		
+	}
+
+	@Override
+	public ArticleDto get(ArticleDto dto) {		
+		return articleDao.get(dto);
+	}
 	
 }
