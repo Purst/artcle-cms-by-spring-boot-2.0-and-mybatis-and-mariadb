@@ -33,7 +33,7 @@ public class ArticleController {
 		
 		log.info("list : " + list);	
 		
-		model.addAttribute("list", list);	
+		model.addAttribute("list", list);
 		
 		return "article/list"; 
 	}

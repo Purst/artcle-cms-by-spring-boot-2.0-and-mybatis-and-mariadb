@@ -6,25 +6,25 @@
 
 	<select id="getList" parameterType="map" resultType="ArticleDto">
 		SELECT *
-		  FROM ARTICLE
+		  FROM article
 		 ORDER BY ID DESC
 	</select>
 	
 	<insert id="add" parameterType="ArticleDto">
-		INSERT INTO ARTICLE(NICKNAME, PASSWORD, TITLE, CONTENTS, REG_DATE)
+		INSERT INTO article(nickname, password, title, contents, reg_date)
 		VALUES(#{nickname}, SHA2(#{password}, 512), #{title}, #{contents}, SYSDATE());
 	</insert>	
 	
 	<select id="get" parameterType="ArticleDto" resultType="ArticleDto">
 		SELECT *
-		  FROM ARTICLE
+		  FROM article
 		 WHERE 1=1
 		   AND ID = ${id}
 	</select>
 	
 	<delete id="delete" parameterType="ArticleDto">
 		DELETE
-		  FROM ARTICLE
+		  FROM article
 		 WHERE 1=1
 		   AND ID = ${id}
 	</delete>

@@ -12,8 +12,8 @@
 	<artifactId>starter</artifactId>	
 	<name>starter</name>
 	<description>starter</description>
-	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<packaging>war</packaging>	
+	<version>1.0.10</version>
 	<properties>
 		<java.version>18</java.version>
 	</properties>
