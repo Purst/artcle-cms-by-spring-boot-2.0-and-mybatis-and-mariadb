@@ -9,10 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.miracom</groupId>
-	<artifactId>starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>starter</artifactId>	
 	<name>starter</name>
 	<description>starter</description>
+	<packaging>war</packaging>
+	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java.version>18</java.version>
 	</properties>
@@ -98,6 +99,13 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>28.0-jre</version>
+		</dependency>
+		
+		<!-- 배포 이후 내장 tomcat이 아닌 이미 존재하는 tomcat 서버를 이용하기 위함 !-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope> 
 		</dependency>
 		
 	</dependencies>
