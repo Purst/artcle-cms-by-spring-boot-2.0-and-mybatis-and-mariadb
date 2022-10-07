@@ -2,9 +2,17 @@
 mvnw
 mvnw.cmd
 
+target/classes
+target/generated-sources
+target/generated-test-sources
+target/m2e-wtp
+target/maven-archiver
+target/maven-status
+target/starter-1.0.0-BUILD-SNAPSHOT
+target/surefire-reports
+target/test-classes
 
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
