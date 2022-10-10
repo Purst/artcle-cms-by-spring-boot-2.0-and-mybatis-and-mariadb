@@ -13,7 +13,7 @@
 
 <body id="page-top">
 
-<form id="listForm" action="/article/detail" method="post">
+<form id="listForm" action="<c:url value="/article/detail"/>" method="post">
 	<input type="hidden" id="id" name="id" />
 
     <!-- Page Wrapper -->
@@ -39,7 +39,7 @@
 					
                     <div class="my-2"></div>
 										
-					<a href="/article/add" class="btn btn-primary btn-icon-split btn-sm">
+					<a href="<c:url value="/article/add"/>" class="btn btn-primary btn-icon-split btn-sm">
                         <span class="icon text-white-50"></span>
                         <span class="text">Register New Service</span>
                     </a>

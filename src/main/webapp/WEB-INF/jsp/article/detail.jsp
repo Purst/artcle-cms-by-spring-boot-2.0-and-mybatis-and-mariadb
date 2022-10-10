@@ -13,7 +13,7 @@
 
 <body id="page-top">
 
-<form id="detailForm" method="post">
+<form id="detailForm" action="<c:url value="/article/remove"/>" method="post">
 	<input type="hidden" id="id" name="id" value="${dto.id}" />
 
 	<!-- Page Wrapper -->
@@ -106,7 +106,7 @@ function remove(id) {
 		return;
 	}
 	
-	$('#detailForm').attr('target', '_self').attr('action', '/article/remove').attr('method', 'post').submit();
+	$('#detailForm').attr('target', '_self').attr('method', 'post').submit();
 }
 
 </script>
