@@ -13,7 +13,7 @@
 	<name>starter</name>
 	<description>starter</description>
 	<packaging>war</packaging>	
-	<version>1.0.14</version>
+	<version>1.0.18</version>
 	<properties>
 		<java.version>18</java.version>
 	</properties>
